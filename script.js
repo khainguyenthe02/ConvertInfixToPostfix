@@ -5,25 +5,28 @@ const containerTable = document.querySelector(".containerTable");
 const container = document.querySelector(".container");
 let stack = [];
 let output = [];
-const dau = ["*", ")", "(", "-", "+", "%", "/"];
+const dau = ["*", ")", "(", "-", "+", "%", "/", "^"];
 
 const handleConvertToPrefix = () => {
   containerTable.innerHTML = "";
+  document.querySelector(".tbodyTableResult").innerHTML = "";
   stack = [];
   output = [];
-  const value = input.value.trim();
+  let value = input.value.trim();
+  value = value.replace(/\s/g, "");
+  console.log(value);
   const ArrayString = [];
   let so = "";
   for (let i = 0; i < value.length; i++) {
     if (isNaN(value[i])) {
       ArrayString.push(value[i]);
     } else {
-      if (isNaN(value[i + 1])) {
+      if (isNaN(value[i + 1]) && value[i + 1] !== ".") {
         ArrayString.push(value[i]);
       } else {
         for (let j = i; j < value.length; j++) {
           so += value[j];
-          if (isNaN(value[j + 1])) {
+          if (isNaN(value[j + 1]) && value[j + 1] !== ".") {
             i = j;
             break;
           }
@@ -40,7 +43,6 @@ const handleConvertToPrefix = () => {
 
   ArrayString.forEach((token) => {
     createMessage(`Xét "${token}": `);
-    // debugger;
     if (!dau.includes(token)) {
       output.push(token);
       createMessage(`"${token}" là số nên đẩy ra Output`);
@@ -84,7 +86,7 @@ const handleConvertToPrefix = () => {
         } else {
           if (token === ")") {
             createMessage(
-              `Token là dấu ) nên chuyển lần lượt các dấu từ đỉnh stack sang output đến khi gặp dấu ( thì xóa dấu ( đó đi và dừng lại`
+              `Token là dấu ) nên chuyển lần lượt các dấu từ đỉnh stack sang output đến khi gặp dấu "(" thì xóa dấu "(" đó đi và dừng lại`
             );
             createTable();
             for (let i = stack.length - 1; i >= 0; i--) {
@@ -96,7 +98,6 @@ const handleConvertToPrefix = () => {
                   stack.join(", "),
                   output.join(", ")
                 );
-
                 return;
               } else {
                 output.push(stack[stack.length - 1]);
@@ -137,11 +138,12 @@ const handleConvertToPrefix = () => {
   }
 
   result.innerHTML = `Vậy biểu thức hậu tố của ${value} là: ${output.join(
-    ", "
+    " "
   )}`;
   document.querySelector(".tableResult").style.display = "block";
 };
 const compare = (text) => {
+  if (text == "^") return 3;
   if (text == "*" || text == "/" || text == "%") return 2;
   if (text == "+" || text == "-") return 1;
   return 0;
@@ -189,7 +191,6 @@ const check = (token) => {
 
 const createTr = (token, stack, output) => {
   const tbody = document.querySelectorAll(".stepResult");
-  console.log(tbody);
   const tr = document.createElement("tr");
   const td = ` 
                     <td>${token}</td>
@@ -223,7 +224,7 @@ const createTable = () => {
 };
 
 const createTrForTableResult = (token, stack, output) => {
-  const tbody = document.querySelectorAll(".tbodyTableResult");
+  const tbody = document.querySelector(".tbodyTableResult");
   const tr = document.createElement("tr");
   const td = ` 
                     <td>${token}</td>
@@ -231,5 +232,5 @@ const createTrForTableResult = (token, stack, output) => {
                     <td>${output}</td>
                 `;
   tr.innerHTML = td;
-  tbody[tbody.length - 1].appendChild(tr);
+  tbody.appendChild(tr);
 };

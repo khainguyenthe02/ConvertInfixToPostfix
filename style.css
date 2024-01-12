@@ -4,11 +4,12 @@ td {
 }
 th,
 td {
-  width: 300px;
+  width: 350px;
+
   padding: 10px;
 }
 
 .container {
-  width: 600px;
+  width: 800px;
   margin: 0 auto;
 }
