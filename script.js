@@ -3,9 +3,10 @@ const input = document.querySelector("input");
 const result = document.querySelector("#result");
 let stack = [];
 let output = [];
+const dau = ["*", ")", "(", "-", "+", "%", "/"];
 
 const handleConvertToPrefix = () => {
-  const value = input.value;
+  const value = input.value.trim();
   const ArrayString = [];
   let so = "";
   for (let i = 0; i < value.length; i++) {
@@ -32,15 +33,7 @@ const handleConvertToPrefix = () => {
     return;
   }
   ArrayString.forEach((token) => {
-    if (
-      token !== "*" &&
-      token !== "/" &&
-      token !== "%" &&
-      token !== "+" &&
-      token !== "-" &&
-      token !== "(" &&
-      token !== ")"
-    ) {
+    if (!dau.includes(token)) {
       output.push(token);
     } else {
       if (stack.length === 0) {
@@ -48,7 +41,9 @@ const handleConvertToPrefix = () => {
       } else if (token === "(") {
         stack.push(token);
       } else {
-        if (compare(token) > compare(stack[stack.length - 1])) {
+        if (token === "(") {
+          stack.push(token);
+        } else if (compare(token) > compare(stack[stack.length - 1])) {
           stack.push(token);
         } else {
           if (token === ")") {
@@ -72,7 +67,8 @@ const handleConvertToPrefix = () => {
   });
   const stackReverse = stack.reverse();
   output.concat(stackReverse);
-  result.innerHTML = output;
+
+  result.innerHTML = output.join(", ");
 };
 const compare = (text) => {
   if (text == "*" || text == "/" || text == "%") return 2;
