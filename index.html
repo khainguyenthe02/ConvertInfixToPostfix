@@ -5,12 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <input type="text" />
-    <button class="btnChuyendoi" onclick="handleConvertToPrefix()">Chuyển đổi</button>
-    <p id="result"></p>
+    <div class="container">
+        <div style="width: fit-content; margin:0 auto;">
+            <input type="text" />
+            <button class="btnChuyendoi" onclick="handleConvertToPrefix()">Chuyển đổi</button>
+
+        </div>
+        <div class="containerTable"></div>
+
+        <div class="tableResult" style="display: none">
+            <h2 style="color: red">Bảng tổng kết</h2>
+            <table>
+                <tr>
+                    <th>Token</th>
+                    <th>Stack</th>
+                    <th>Out put</th>
+                </tr>
+                <tbody class="tbodyTableResult"></tbody>
+            </table>
+        </div>
+        <p id="result"></p>
+    </div>
 </body>
 <script src="script.js"></script>
 
