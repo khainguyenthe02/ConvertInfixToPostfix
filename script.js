@@ -3,9 +3,16 @@ const input = document.querySelector("input");
 const result = document.querySelector("#result");
 const containerTable = document.querySelector(".containerTable");
 const container = document.querySelector(".container");
+const inputText = document.querySelector("#inputText");
 let stack = [];
 let output = [];
 const dau = ["*", ")", "(", "-", "+", "%", "/", "^"];
+
+inputText.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13) {
+    handleConvertToPrefix();
+  }
+});
 
 const handleConvertToPrefix = () => {
   containerTable.innerHTML = "";
@@ -110,7 +117,7 @@ const handleConvertToPrefix = () => {
           } else {
             output.push(stack[stack.length - 1]);
             createMessage(
-              `"${token}" có độ ưu tiên < "${
+              `"${token}" có độ ưu tiên < hoặc = "${
                 stack[stack.length - 1]
               }" nên chuyển "${
                 stack[stack.length - 1]
