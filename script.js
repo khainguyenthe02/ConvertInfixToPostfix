@@ -21,7 +21,6 @@ const handleConvertToPrefix = () => {
   output = [];
   let value = input.value.trim();
   value = value.replace(/\s/g, "");
-  console.log(value);
   const ArrayString = [];
   let so = "";
   for (let i = 0; i < value.length; i++) {
@@ -43,9 +42,27 @@ const handleConvertToPrefix = () => {
       }
     }
   }
-  if (ArrayString[0] === ")") {
-    alert("sai biểu thức");
+  if (
+    dau.includes(ArrayString[0]) ||
+    dau.includes(ArrayString[ArrayString.length - 1])
+  ) {
+    alert("Sai biểu thức");
+    containerTable.innerHTML = "";
+    document.querySelector(".tbodyTableResult").innerHTML = "";
+    document.querySelector(".tableResult").style.display = "none";
+    result.innerHTML = "";
     return;
+  }
+
+  for (let i = 0; i < ArrayString.length; i++) {
+    if (dau.includes(ArrayString[i]) && dau.includes(ArrayString[i + 1])) {
+      alert("Sai biểu thức");
+      containerTable.innerHTML = "";
+      document.querySelector(".tbodyTableResult").innerHTML = "";
+      result.innerHTML = "";
+      document.querySelector(".tableResult").style.display = "none";
+      return;
+    }
   }
 
   ArrayString.forEach((token) => {
