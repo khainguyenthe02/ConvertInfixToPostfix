@@ -1,0 +1,127 @@
+
+body{
+  margin: 0;
+  background-color: #111;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  
+  .wrap-input {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid #fff;
+    h1 {
+      text-align: center;
+      transition: all 200ms ease;
+      font-size: 60px;
+      color: #e0b17a;
+      &:hover {
+        color: #cea370;
+      }
+    }
+
+    #inputText {
+      width: 80%;
+      font-size: 30px;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    #inputFile {
+      width: 80%;
+      padding: 20px 0;
+      font-size: 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .btnChuyendoi {
+      font-size: 20px;
+      padding: 15px 50px;
+      border-radius: 20px;
+      font-weight: 700;
+      background-color: #e0b17a;
+      color: #fff;
+      letter-spacing: 2px;
+      cursor: pointer;
+      &:hover {
+         background-color: #cea370;
+      }
+    }
+  }
+  .wrap-tableResult {
+    width: 70%;
+    max-height: 100%;
+    overflow-y: auto;
+    position: relative;
+
+    .wrap-tableResult-scroll {
+      padding: 20px 40px;
+      .containerTable,
+      .tableResult {
+        font-size: 20px;
+        table {
+          width: 100%;
+          border-color: #fff;
+
+          th,
+          td {
+            border: 1px solid #fff;
+            padding: 20px;
+            text-align: center;
+            transition: all 200ms ease;
+            cursor: pointer;
+            &:hover {
+              background-color: #cea370;
+              color: #fff;
+
+            }
+          }
+        }
+
+        h4 {
+          font-size: 23px;
+          cursor: pointer;
+
+          &:hover {
+            color: #f76b6a;
+          }
+        }
+      }
+
+      #result {
+        font-size: 30px;
+        padding: 40px 0;
+      }
+    }
+
+    #resultText {
+      width: 100%;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 60px;
+      transition: all 200ms ease;
+      text-align: center;
+      color: #e0b17a;
+      &:hover {
+        color: #cea370;
+      }
+
+      &.none-active {
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+      }
+    }
+  }
+}
+

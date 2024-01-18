@@ -1,15 +1,121 @@
-th,
-td {
-  border: 1px solid black;
-}
-th,
-td {
-  width: 350px;
-
-  padding: 10px;
+body {
+  margin: 0;
+  background-color: #111;
+  color: #fff;
 }
 
 .container {
-  width: 800px;
-  margin: 0 auto;
+  display: flex;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+.container .wrap-input {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 2px solid #fff;
+}
+.container .wrap-input h1 {
+  text-align: center;
+  transition: all 200ms ease;
+  font-size: 60px;
+  color: #e0b17a;
+}
+.container .wrap-input h1:hover {
+  color: #cea370;
+}
+.container .wrap-input #inputText {
+  width: 80%;
+  font-size: 30px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.container .wrap-input #inputFile {
+  width: 80%;
+  padding: 20px 0;
+  font-size: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.container .wrap-input .btnChuyendoi {
+  font-size: 20px;
+  padding: 15px 50px;
+  border-radius: 20px;
+  font-weight: 700;
+  background-color: #e0b17a;
+  color: #fff;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+.container .wrap-input .btnChuyendoi:hover {
+  background-color: #cea370;
+}
+.container .wrap-tableResult {
+  width: 70%;
+  max-height: 100%;
+  overflow-y: auto;
+  position: relative;
+}
+.container .wrap-tableResult .wrap-tableResult-scroll {
+  padding: 20px 40px;
+}
+.container .wrap-tableResult .wrap-tableResult-scroll .containerTable,
+.container .wrap-tableResult .wrap-tableResult-scroll .tableResult {
+  font-size: 20px;
+}
+.container .wrap-tableResult .wrap-tableResult-scroll .containerTable table,
+.container .wrap-tableResult .wrap-tableResult-scroll .tableResult table {
+  width: 100%;
+  border-color: #fff;
+}
+.container .wrap-tableResult .wrap-tableResult-scroll .containerTable table th,
+.container .wrap-tableResult .wrap-tableResult-scroll .containerTable table td,
+.container .wrap-tableResult .wrap-tableResult-scroll .tableResult table th,
+.container .wrap-tableResult .wrap-tableResult-scroll .tableResult table td {
+  border: 1px solid #fff;
+  padding: 20px;
+  text-align: center;
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+.container .wrap-tableResult .wrap-tableResult-scroll .containerTable table th:hover,
+.container .wrap-tableResult .wrap-tableResult-scroll .containerTable table td:hover,
+.container .wrap-tableResult .wrap-tableResult-scroll .tableResult table th:hover,
+.container .wrap-tableResult .wrap-tableResult-scroll .tableResult table td:hover {
+  background-color: #cea370;
+  color: #fff;
+}
+.container .wrap-tableResult .wrap-tableResult-scroll .containerTable h4,
+.container .wrap-tableResult .wrap-tableResult-scroll .tableResult h4 {
+  font-size: 23px;
+  cursor: pointer;
+}
+.container .wrap-tableResult .wrap-tableResult-scroll .containerTable h4:hover,
+.container .wrap-tableResult .wrap-tableResult-scroll .tableResult h4:hover {
+  color: #f76b6a;
+}
+.container .wrap-tableResult .wrap-tableResult-scroll #result {
+  font-size: 30px;
+  padding: 40px 0;
+}
+.container .wrap-tableResult #resultText {
+  width: 100%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 60px;
+  transition: all 200ms ease;
+  text-align: center;
+  color: #e0b17a;
+}
+.container .wrap-tableResult #resultText:hover {
+  color: #cea370;
+}
+.container .wrap-tableResult #resultText.none-active {
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
 }

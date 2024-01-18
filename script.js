@@ -4,6 +4,7 @@ const result = document.querySelector("#result");
 const containerTable = document.querySelector(".containerTable");
 const container = document.querySelector(".container");
 const inputText = document.querySelector("#inputText");
+const resultText = document.querySelector("#resultText");
 let stack = [];
 let output = [];
 const dau = ["*", ")", "(", "-", "+", "%", "/", "^"];
@@ -15,6 +16,17 @@ inputText.addEventListener("keydown", (e) => {
   }
 });
 
+document.getElementById('inputFile')
+.addEventListener('change', function () {
+
+    let fr = new FileReader();
+    fr.onload = function () {
+        document.getElementById('inputText').value  = fr.result;
+    }
+
+    fr.readAsText(this.files[0]);
+})
+
 const handleConvertToPrefix = () => {
   containerTable.innerHTML = "";
   document.querySelector(".tbodyTableResult").innerHTML = "";
@@ -24,6 +36,11 @@ const handleConvertToPrefix = () => {
   value = value.replace(/\s/g, "");
   const ArrayString = [];
   let so = "";
+
+  if (!resultText.classList.contains('none-active')) {
+    resultText.classList.add('none-active');
+  }
+
   for (let i = 0; i < value.length; i++) {
     if (isNaN(value[i])) {
       ArrayString.push(value[i]);
@@ -49,6 +66,10 @@ const handleConvertToPrefix = () => {
   ) {
     if (ArrayString[0] !== "(" || ArrayString[ArrayString.length - 1] !== ")") {
       alert("Sai biểu thức");
+
+      if (resultText.classList.contains('none-active')) {
+        resultText.classList.remove('none-active');
+      }
       containerTable.innerHTML = "";
       document.querySelector(".tbodyTableResult").innerHTML = "";
       document.querySelector(".tableResult").style.display = "none";
@@ -62,6 +83,11 @@ const handleConvertToPrefix = () => {
     ArrayString.filter((e) => e === ")").length
   ) {
     alert("Sai biểu thức");
+
+    if (resultText.classList.contains('none-active')) {
+      resultText.classList.remove('none-active');
+    }
+
     containerTable.innerHTML = "";
     document.querySelector(".tbodyTableResult").innerHTML = "";
     result.innerHTML = "";
@@ -72,6 +98,11 @@ const handleConvertToPrefix = () => {
     if (dau.includes(ArrayString[i]) && dau.includes(ArrayString[i + 1])) {
       if (ArrayString[i] === "(" && ArrayString[i + 1] !== "(") {
         alert("Sai biểu thức");
+
+        if (resultText.classList.contains('none-active')) {
+          resultText.classList.remove('none-active');
+        }
+
         containerTable.innerHTML = "";
         document.querySelector(".tbodyTableResult").innerHTML = "";
         result.innerHTML = "";
@@ -79,6 +110,11 @@ const handleConvertToPrefix = () => {
         return;
       } else if (ArrayString[i] === ")" && ArrayString[i + 1] === "(") {
         alert("Sai biểu thức");
+        
+        if (resultText.classList.contains('none-active')) {
+          resultText.classList.remove('none-active');
+        }
+        
         containerTable.innerHTML = "";
         document.querySelector(".tbodyTableResult").innerHTML = "";
         result.innerHTML = "";
@@ -89,6 +125,11 @@ const handleConvertToPrefix = () => {
         dau1.includes(ArrayString[i + 1])
       ) {
         alert("Sai biểu thức");
+        
+        if (resultText.classList.contains('none-active')) {
+          resultText.classList.remove('none-active');
+        }
+        
         containerTable.innerHTML = "";
         document.querySelector(".tbodyTableResult").innerHTML = "";
         result.innerHTML = "";
