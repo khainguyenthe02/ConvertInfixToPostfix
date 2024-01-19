@@ -67,7 +67,7 @@ const handleConvertToPrefix = () => {
         (ArrayString[0] !== "(" && isNaN(ArrayString[0])) ||
         dau1.includes(ArrayString[ArrayString.length - 1])
       ) {
-        alert("Sai biểu thứcafgfg");
+        alert("Sai biểu thức");
 
         if (resultText.classList.contains("none-active")) {
           resultText.classList.remove("none-active");
@@ -99,7 +99,7 @@ const handleConvertToPrefix = () => {
     for (let i = 0; i < ArrayString.length; i++) {
       if (dau.includes(ArrayString[i]) && dau.includes(ArrayString[i + 1])) {
         if (ArrayString[i] === "(" && ArrayString[i + 1] !== "(") {
-          alert("Sai biểu thức1");
+          alert("Sai biểu thức");
 
           if (resultText.classList.contains("none-active")) {
             resultText.classList.remove("none-active");
@@ -111,7 +111,21 @@ const handleConvertToPrefix = () => {
           document.querySelector(".tableResult").style.display = "none";
           return;
         } else if (ArrayString[i] === ")" && ArrayString[i + 1] === "(") {
-          alert("Sai biểu thức2");
+          alert("Sai biểu thức");
+
+          if (resultText.classList.contains("none-active")) {
+            resultText.classList.remove("none-active");
+          }
+          containerTable.innerHTML = "";
+          document.querySelector(".tbodyTableResult").innerHTML = "";
+          result.innerHTML = "";
+          document.querySelector(".tableResult").style.display = "none";
+          return;
+        } else if (
+          dau1.includes(ArrayString[i]) &&
+          dau1.includes(ArrayString[i + 1])
+        ) {
+          alert("Sai biểu thức");
 
           if (resultText.classList.contains("none-active")) {
             resultText.classList.remove("none-active");
@@ -124,9 +138,9 @@ const handleConvertToPrefix = () => {
           return;
         } else if (
           dau1.includes(ArrayString[i]) &&
-          dau1.includes(ArrayString[i + 1])
+          ArrayString[i + 1] === ")"
         ) {
-          alert("Sai biểu thức3");
+          alert("Sai biểu thức");
 
           if (resultText.classList.contains("none-active")) {
             resultText.classList.remove("none-active");
