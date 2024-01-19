@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Infix to Postfix</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,8 +14,12 @@
         <div class="wrap-input">
             (4-3)*(5^7-9/4)/(5-7)
             <H1>Infix to Postfix</H1>
-            <input type="text" id="inputText" />
-            <input type="file" id="inputFile" accept="text" />
+            <input type="text" id="inputText" placeholder="Text me..." />
+            <label for="inputFile">
+                <div class="btnChooseFile">Choose file</div>
+            </label>
+            <input type="file" id="inputFile" name="inputFile" accept=".txt" />
+
             <button class="btnChuyendoi" onclick="handleConvertToPrefix()">Convert</button>
 
         </div>

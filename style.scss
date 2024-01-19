@@ -1,5 +1,4 @@
-
-body{
+body {
   margin: 0;
   background-color: #111;
   color: #fff;
@@ -10,7 +9,7 @@ body{
   height: 100vh;
   max-height: 100vh;
   overflow: hidden;
-  
+
   .wrap-input {
     width: 30%;
     display: flex;
@@ -41,6 +40,7 @@ body{
       font-size: 20px;
       border-radius: 20px;
       cursor: pointer;
+      display: none;
     }
 
     .btnChuyendoi {
@@ -52,8 +52,23 @@ body{
       color: #fff;
       letter-spacing: 2px;
       cursor: pointer;
+      margin: 15px 0;
       &:hover {
-         background-color: #cea370;
+        background-color: #cea370;
+      }
+    }
+
+    .btnChooseFile {
+      font-size: 20px;
+      padding: 15px 50px;
+      border-radius: 20px;
+      font-weight: 700;
+      background-color: #e0b17a;
+      color: #fff;
+      letter-spacing: 2px;
+      cursor: pointer;
+      &:hover {
+        background-color: #cea370;
       }
     }
   }
@@ -82,7 +97,6 @@ body{
             &:hover {
               background-color: #cea370;
               color: #fff;
-
             }
           }
         }
@@ -124,4 +138,3 @@ body{
     }
   }
 }
-
