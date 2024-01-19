@@ -25,6 +25,10 @@ document.getElementById("inputFile").addEventListener("change", function () {
   fr.readAsText(this.files[0]);
 });
 
+const isEmpty = (stack) => {
+  return stack.length === 0 ? true : false;
+}
+
 const handleConvertToPrefix = () => {
   if (inputText.value.length > 0) {
     containerTable.innerHTML = "";
@@ -96,6 +100,7 @@ const handleConvertToPrefix = () => {
       document.querySelector(".tableResult").style.display = "none";
       return;
     }
+
     for (let i = 0; i < ArrayString.length; i++) {
       if (dau.includes(ArrayString[i]) && dau.includes(ArrayString[i + 1])) {
         if (ArrayString[i] === "(" && ArrayString[i + 1] !== "(") {
@@ -164,7 +169,7 @@ const handleConvertToPrefix = () => {
         createTr(token, stack.join(", "), output.join(", "));
         createTrForTableResult(token, stack.join(", "), output.join(", "));
       } else {
-        if (stack.length === 0) {
+        if (isEmpty(stack)) {
           stack.push(token);
           createMessage(
             `"${token}" không là số và stack rỗng nên đẩy "${token}" vào stack `
@@ -212,8 +217,7 @@ const handleConvertToPrefix = () => {
             createTrForTableResult(token, stack.join(", "), output.join(", "));
           } else if (compare(token) > compare(stack[stack.length - 1])) {
             createMessage(
-              `"${token}" có độ ưu tiên >" ${
-                stack[stack.length - 1]
+              `"${token}" có độ ưu tiên >" ${stack[stack.length - 1]
               }" nên đẩy "${token}" vào stack`
             );
             stack.push(token);
@@ -223,10 +227,8 @@ const handleConvertToPrefix = () => {
           } else {
             output.push(stack[stack.length - 1]);
             createMessage(
-              `"${token}" có độ ưu tiên < hoặc = toán tử ngoài cùng của stack ("${
-                stack[stack.length - 1]
-              }") nên chuyển "${
-                stack[stack.length - 1]
+              `"${token}" có độ ưu tiên < hoặc = toán tử ngoài cùng của stack ("${stack[stack.length - 1]
+              }") nên chuyển "${stack[stack.length - 1]
               }" vào stack và kiểm tra lại: Nếu stack rỗng hoặc toán tử ngoài cùng stack là  "(" hoặc "${token}" có độ ưu tiên > toán tử ngoài cùng stack thì chuyển "${token}" vào stack, nếu "${token}" có độ ưu tiên < toán tử ngoài cùng stack thì thêm toán tử ngoài cùng stack vào output và thực hiện lại`
             );
             stack.pop();
@@ -275,7 +277,7 @@ const check = (token) => {
   ) {
     output.push(token);
   } else {
-    if (stack.length === 0) {
+    if (isEmpty(stack)) {
       stack.push(token);
     } else if (token === "(") {
       stack.push(token);
