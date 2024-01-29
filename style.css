@@ -55,6 +55,7 @@ body {
   background-color: #cea370;
 }
 .container .wrap-input .btnChooseFile {
+  margin: 15px 0;
   font-size: 20px;
   padding: 15px 50px;
   border-radius: 20px;
@@ -63,7 +64,6 @@ body {
   color: #fff;
   letter-spacing: 2px;
   cursor: pointer;
-  margin: 15px 0;
 }
 .container .wrap-input .btnChooseFile:hover {
   background-color: #cea370;
@@ -96,30 +96,10 @@ body {
   transition: all 200ms ease;
   cursor: pointer;
 }
-.container
-  .wrap-tableResult
-  .wrap-tableResult-scroll
-  .containerTable
-  table
-  th:hover,
-.container
-  .wrap-tableResult
-  .wrap-tableResult-scroll
-  .containerTable
-  table
-  td:hover,
-.container
-  .wrap-tableResult
-  .wrap-tableResult-scroll
-  .tableResult
-  table
-  th:hover,
-.container
-  .wrap-tableResult
-  .wrap-tableResult-scroll
-  .tableResult
-  table
-  td:hover {
+.container .wrap-tableResult .wrap-tableResult-scroll .containerTable table th:hover,
+.container .wrap-tableResult .wrap-tableResult-scroll .containerTable table td:hover,
+.container .wrap-tableResult .wrap-tableResult-scroll .tableResult table th:hover,
+.container .wrap-tableResult .wrap-tableResult-scroll .tableResult table td:hover {
   background-color: #cea370;
   color: #fff;
 }
