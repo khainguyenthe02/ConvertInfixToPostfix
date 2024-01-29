@@ -1,6 +1,7 @@
 const btnChuyendoi = document.querySelector(".btnChuyendoi");
 const input = document.querySelector("input");
 const result = document.querySelector("#result");
+const result1 = document.querySelector("#result1");
 const containerTable = document.querySelector(".containerTable");
 const container = document.querySelector(".container");
 const inputText = document.querySelector("#inputText");
@@ -227,7 +228,7 @@ const handleConvertToPrefix = () => {
                 stack[stack.length - 1]
               }") nên chuyển "${
                 stack[stack.length - 1]
-              }" vào stack và kiểm tra lại: Nếu stack rỗng hoặc toán tử ngoài cùng stack là  "(" hoặc "${token}" có độ ưu tiên > toán tử ngoài cùng stack thì chuyển "${token}" vào stack, nếu "${token}" có độ ưu tiên < toán tử ngoài cùng stack thì thêm toán tử ngoài cùng stack vào output và thực hiện lại`
+              }" vào output và kiểm tra lại: Nếu stack rỗng hoặc toán tử ngoài cùng stack là  "(" hoặc "${token}" có độ ưu tiên > toán tử ngoài cùng stack thì chuyển "${token}" vào stack, nếu "${token}" có độ ưu tiên < toán tử ngoài cùng stack thì thêm toán tử ngoài cùng stack vào output và thực hiện lại`
             );
             stack.pop();
             check(token);
@@ -251,6 +252,9 @@ const handleConvertToPrefix = () => {
     }
 
     result.innerHTML = `Vậy biểu thức hậu tố của ${value} là: ${output.join(
+      " "
+    )}`;
+    result1.innerHTML = `=> Biểu thức hậu tố của ${value} là: ${output.join(
       " "
     )}`;
     document.querySelector(".tableResult").style.display = "block";
@@ -327,7 +331,7 @@ const createTable = () => {
                 <tr>
                     <th>Token</th>
                     <th>Stack</th>
-                    <th>Out put</th>
+                    <th>Output</th>
                 </tr>
             </thead>
             <tbody  class="stepResult"></tbody>
