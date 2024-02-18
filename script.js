@@ -77,9 +77,6 @@ const handleConvertToPrefix = () => {
     }
     if (ArrayString.some((t) => kyTuDacBiet.includes(t))) {
       alert("Biểu thức không thể chứa các ký tự đặc biệt");
-      if (resultText.classList.contains("none-active")) {
-        resultText.classList.remove("none-active");
-      }
       containerTable.innerHTML = "";
       document.querySelector(".tbodyTableResult").innerHTML = "";
       document.querySelector(".tableResult").style.display = "none";
@@ -96,9 +93,6 @@ const handleConvertToPrefix = () => {
       ) {
         alert("Sai biểu thức");
 
-        if (resultText.classList.contains("none-active")) {
-          resultText.classList.remove("none-active");
-        }
         containerTable.innerHTML = "";
         document.querySelector(".tbodyTableResult").innerHTML = "";
         document.querySelector(".tableResult").style.display = "none";
@@ -112,11 +106,6 @@ const handleConvertToPrefix = () => {
       ArrayString.filter((e) => e === ")").length
     ) {
       alert("Sai biểu thức");
-
-      if (resultText.classList.contains("none-active")) {
-        resultText.classList.remove("none-active");
-      }
-
       containerTable.innerHTML = "";
       document.querySelector(".tbodyTableResult").innerHTML = "";
       result.innerHTML = "";
@@ -128,10 +117,6 @@ const handleConvertToPrefix = () => {
       if (dau.includes(ArrayString[i]) && dau.includes(ArrayString[i + 1])) {
         if (ArrayString[i] === "(" && ArrayString[i + 1] !== "(") {
           alert("Sai biểu thức");
-
-          if (resultText.classList.contains("none-active")) {
-            resultText.classList.remove("none-active");
-          }
 
           containerTable.innerHTML = "";
           document.querySelector(".tbodyTableResult").innerHTML = "";
@@ -154,11 +139,6 @@ const handleConvertToPrefix = () => {
           dau1.includes(ArrayString[i + 1])
         ) {
           alert("Sai biểu thức");
-
-          if (resultText.classList.contains("none-active")) {
-            resultText.classList.remove("none-active");
-          }
-
           containerTable.innerHTML = "";
           document.querySelector(".tbodyTableResult").innerHTML = "";
           result.innerHTML = "";
