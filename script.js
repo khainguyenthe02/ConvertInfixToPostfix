@@ -10,8 +10,10 @@ let stack = [];
 let output = [];
 const dau = ["*", ")", "(", "-", "+", "%", "/", "^"];
 const dau1 = ["*", "-", "+", "%", "/", "^"];
+const kyTuDacBiet = ["!", "@", "#", "$", "&", "_", "|", "?", ";", ":", "~"];
 
-inputText.addEventListener("keydown", (e) => {
+inputText.addEventListener("keyup", (e) => {
+  console.log(e.key);
   if (e.keyCode === 13 && inputText.value.length > 0) {
     handleConvertToPrefix();
   }
@@ -41,10 +43,6 @@ const handleConvertToPrefix = () => {
     const ArrayString = [];
     let so = "";
 
-    if (!resultText.classList.contains("none-active")) {
-      resultText.classList.add("none-active");
-    }
-
     for (let i = 0; i < value.length; i++) {
       if (isNaN(value[i])) {
         ArrayString.push(value[i]);
@@ -63,6 +61,17 @@ const handleConvertToPrefix = () => {
           so = "";
         }
       }
+    }
+    if (ArrayString.some((t) => kyTuDacBiet.includes(t))) {
+      alert("Biểu thức không thể chứa các ký tự đặc biệt");
+      if (resultText.classList.contains("none-active")) {
+        resultText.classList.remove("none-active");
+      }
+      containerTable.innerHTML = "";
+      document.querySelector(".tbodyTableResult").innerHTML = "";
+      document.querySelector(".tableResult").style.display = "none";
+      result.innerHTML = "";
+      return;
     }
     if (
       dau.includes(ArrayString[0]) ||
@@ -147,11 +156,6 @@ const handleConvertToPrefix = () => {
           ArrayString[i + 1] === ")"
         ) {
           alert("Sai biểu thức");
-
-          if (resultText.classList.contains("none-active")) {
-            resultText.classList.remove("none-active");
-          }
-
           containerTable.innerHTML = "";
           document.querySelector(".tbodyTableResult").innerHTML = "";
           result.innerHTML = "";
@@ -161,6 +165,9 @@ const handleConvertToPrefix = () => {
       }
     }
 
+    if (!resultText.classList.contains("none-active")) {
+      resultText.classList.add("none-active");
+    }
     ArrayString.forEach((token) => {
       createMessage(`Xét "${token}": `);
       if (!dau.includes(token)) {
@@ -357,3 +364,5 @@ const createTrForTableResult = (token, stack, output) => {
   tr.innerHTML = td;
   tbody.appendChild(tr);
 };
+
+const checkString = () => {};
