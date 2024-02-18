@@ -10,10 +10,23 @@ let stack = [];
 let output = [];
 const dau = ["*", ")", "(", "-", "+", "%", "/", "^"];
 const dau1 = ["*", "-", "+", "%", "/", "^"];
-const kyTuDacBiet = ["!", "@", "#", "$", "&", "_", "|", "?", ";", ":", "~"];
+const kyTuDacBiet = [
+  "!",
+  "@",
+  "#",
+  "$",
+  "&",
+  "_",
+  "|",
+  "?",
+  ";",
+  ":",
+  "~",
+  "'",
+  '"',
+];
 
 inputText.addEventListener("keyup", (e) => {
-  console.log(e.key);
   if (e.keyCode === 13 && inputText.value.length > 0) {
     handleConvertToPrefix();
   }
