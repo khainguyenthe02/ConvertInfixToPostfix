@@ -24,6 +24,15 @@ const kyTuDacBiet = [
   "~",
   "'",
   '"',
+  "/",
+  '{',
+  '}',
+  '[',
+  ']',
+  '>',
+  '<',
+  '=',
+
 ];
 
 inputText.addEventListener("keyup", (e) => {
@@ -56,6 +65,7 @@ const handleConvertToPrefix = () => {
     const ArrayString = [];
     let so = "";
 
+    // Check số thập phân
     for (let i = 0; i < value.length; i++) {
       if (isNaN(value[i])) {
         ArrayString.push(value[i]);
@@ -75,6 +85,10 @@ const handleConvertToPrefix = () => {
         }
       }
     }
+    //
+
+
+    // Check kí tự đặc biệt
     if (ArrayString.some((t) => kyTuDacBiet.includes(t))) {
       alert("Biểu thức không thể chứa các ký tự đặc biệt");
       containerTable.innerHTML = "";
@@ -83,10 +97,14 @@ const handleConvertToPrefix = () => {
       result.innerHTML = "";
       return;
     }
+    //
+
+    //
     if (
       dau.includes(ArrayString[0]) ||
       dau.includes(ArrayString[ArrayString.length - 1])
     ) {
+      //kiểm tra đầu cuối có phải toán tử hay 0 vad ký tự đầu có phải dấu ) không
       if (
         (ArrayString[0] !== "(" && isNaN(ArrayString[0])) ||
         dau1.includes(ArrayString[ArrayString.length - 1])
@@ -100,7 +118,7 @@ const handleConvertToPrefix = () => {
         return;
       }
     }
-
+// check số lượng dấu đóng mở ngoạc có bằng nhau hay 0
     if (
       ArrayString.filter((e) => e === "(").length !==
       ArrayString.filter((e) => e === ")").length
@@ -115,6 +133,7 @@ const handleConvertToPrefix = () => {
 
     for (let i = 0; i < ArrayString.length; i++) {
       if (dau.includes(ArrayString[i]) && dau.includes(ArrayString[i + 1])) {
+        //check sau dấu mở ngoặc có phải toán tử không
         if (ArrayString[i] === "(" && ArrayString[i + 1] !== "(") {
           alert("Sai biểu thức");
 
@@ -123,6 +142,7 @@ const handleConvertToPrefix = () => {
           result.innerHTML = "";
           document.querySelector(".tableResult").style.display = "none";
           return;
+          // check sau đóng ngoặc có phải mở ngoặc không
         } else if (ArrayString[i] === ")" && ArrayString[i + 1] === "(") {
           alert("Sai biểu thức");
 
@@ -135,6 +155,7 @@ const handleConvertToPrefix = () => {
           document.querySelector(".tableResult").style.display = "none";
           return;
         } else if (
+          // check 2 toán tử có cạnh nhau không
           dau1.includes(ArrayString[i]) &&
           dau1.includes(ArrayString[i + 1])
         ) {
@@ -145,6 +166,7 @@ const handleConvertToPrefix = () => {
           document.querySelector(".tableResult").style.display = "none";
           return;
         } else if (
+          //check sau toán tử đó có phải dấu )
           dau1.includes(ArrayString[i]) &&
           ArrayString[i + 1] === ")"
         ) {
@@ -272,6 +294,7 @@ const compare = (text) => {
   return 0;
 };
 
+// Check dấu
 const check = (token) => {
   if (
     token !== "*" &&
