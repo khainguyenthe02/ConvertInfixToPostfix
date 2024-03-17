@@ -24,14 +24,13 @@ const kyTuDacBiet = [
   "~",
   "'",
   '"',
-  "/",
-  '{',
-  '}',
-  '[',
-  ']',
-  '>',
-  '<',
-  '=',
+  "{",
+  "}",
+  "[",
+  "]",
+  ">",
+  "<",
+  "=",
 ];
 
 // const kyTuDacBiet = ['1','2','3','4','5','6','7','8','9','0',"*", ")", "(", "-", "+", "%", "/", "^",'.'];
@@ -87,7 +86,6 @@ const handleConvertToPrefix = () => {
       }
     }
     //
-
 
     // Check kí tự đặc biệt
     if (ArrayString.some((t) => kyTuDacBiet.includes(t))) {
