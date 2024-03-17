@@ -10,31 +10,31 @@ let stack = [];
 let output = [];
 const dau = ["*", ")", "(", "-", "+", "%", "/", "^"];
 const dau1 = ["*", "-", "+", "%", "/", "^"];
-// const kyTuDacBiet = [
-//   "!",
-//   "@",
-//   "#",
-//   "$",
-//   "&",
-//   "_",
-//   "|",
-//   "?",
-//   ";",
-//   ":",
-//   "~",
-//   "'",
-//   '"',
-//   "/",
-//   '{',
-//   '}',
-//   '[',
-//   ']',
-//   '>',
-//   '<',
-//   '=',
+const kyTuDacBiet = [
+  "!",
+  "@",
+  "#",
+  "$",
+  "&",
+  "_",
+  "|",
+  "?",
+  ";",
+  ":",
+  "~",
+  "'",
+  '"',
+  "/",
+  '{',
+  '}',
+  '[',
+  ']',
+  '>',
+  '<',
+  '=',
+];
 
-// ];
-const kyTuDacBiet = ['1','2','3','4','5','6','7','8','9','0',"*", ")", "(", "-", "+", "%", "/", "^",'.'];
+// const kyTuDacBiet = ['1','2','3','4','5','6','7','8','9','0',"*", ")", "(", "-", "+", "%", "/", "^",'.'];
 
 inputText.addEventListener("keyup", (e) => {
   if (e.keyCode === 13 && inputText.value.length > 0) {
@@ -90,7 +90,7 @@ const handleConvertToPrefix = () => {
 
 
     // Check kí tự đặc biệt
-    if (ArrayString.some((t) => !kyTuDacBiet.includes(t))) {
+    if (ArrayString.some((t) => kyTuDacBiet.includes(t))) {
       alert("Biểu thức không thể chứa các ký tự đặc biệt");
       containerTable.innerHTML = "";
       document.querySelector(".tbodyTableResult").innerHTML = "";
