@@ -48,6 +48,7 @@ document.getElementById("inputFile").addEventListener("change", function () {
   };
 
   fr.readAsText(this.files[0]);
+  document.getElementById("inputFile").value = "";
 });
 
 const isEmpty = (stack) => {
