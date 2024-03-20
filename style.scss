@@ -3,7 +3,12 @@ body {
   background-color: #111;
   color: #fff;
 }
-
+.text-c {
+  text-align: center;
+}
+.hddentag {
+  display: none;
+}
 .container {
   display: flex;
   height: 100vh;
@@ -34,16 +39,13 @@ body {
       padding: 10px;
     }
 
-    #inputFile {
-      width: 80%;
-      padding: 20px 0;
-      font-size: 20px;
-      border-radius: 20px;
-      cursor: pointer;
+    #inputFile,
+    #inputFileHis {
       display: none;
     }
 
-    .btnChuyendoi {
+    .btnChuyendoi,
+    .btnSave {
       font-size: 20px;
       padding: 15px 50px;
       border-radius: 20px;
@@ -57,7 +59,8 @@ body {
       }
     }
 
-    .btnChooseFile {
+    .btnChooseFile,
+    .btnChooseFileHistory {
       margin: 15px 0;
       font-size: 20px;
       padding: 15px 50px;
@@ -69,6 +72,50 @@ body {
       cursor: pointer;
       &:hover {
         background-color: #cea370;
+      }
+    }
+
+    #history {
+      margin-bottom: 10px;
+      height: 380px;
+      overflow: auto;
+
+      h3 {
+        position: sticky;
+        top: 0;
+        margin: 0;
+        padding: 10px;
+        text-align: center;
+        color: #e0b17a;
+        font-size: 40px;
+        background-color: #111;
+      }
+
+      table {
+        th,td {
+          border: 1px solid #fff;
+          padding: 20px;
+          text-align: center;
+          transition: all 200ms ease;
+          cursor: pointer;
+        }
+
+        thead {
+          background-color: #111;
+          position: sticky;
+          top: 67px;
+        }
+
+        td:not(.chose) {
+          cursor: default;
+        }
+
+        .chose {
+          &:hover {
+            background-color: #cea370;
+            color: #fff;
+          }
+        }
       }
     }
   }

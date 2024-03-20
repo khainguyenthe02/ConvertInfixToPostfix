@@ -12,7 +12,6 @@
 <body>
     <div class="container">
         <div class="wrap-input">
-            (4-3)*(5^7-9/4)/(5-7)
             <H1>Infix to Postfix</H1>
             <input type="text" id="inputText" placeholder="Text me..." />
             <label for="inputFile">
@@ -21,6 +20,16 @@
             <input type="file" id="inputFile" name="inputFile" accept=".txt" />
 
             <button class="btnChuyendoi" onclick="handleConvertToPrefix()">Convert</button>
+
+            <div class="text-c">
+                <div id="history"></div>
+                <button class="btnSave hddentag" onclick="SaveHis()">Save file history</button>
+                
+                <label for="inputFileHis">
+                    <div class="btnChooseFileHistory">Choose file history</div>
+                </label>
+                <input type="file" id="inputFileHis" name="inputFileHis" accept=".txt" />
+            </div>
 
         </div>
         <div class="wrap-tableResult">

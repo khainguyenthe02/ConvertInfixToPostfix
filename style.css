@@ -4,6 +4,14 @@ body {
   color: #fff;
 }
 
+.text-c {
+  text-align: center;
+}
+
+.hddentag {
+  display: none;
+}
+
 .container {
   display: flex;
   height: 100vh;
@@ -33,15 +41,12 @@ body {
   border-radius: 10px;
   padding: 10px;
 }
-.container .wrap-input #inputFile {
-  width: 80%;
-  padding: 20px 0;
-  font-size: 20px;
-  border-radius: 20px;
-  cursor: pointer;
+.container .wrap-input #inputFile,
+.container .wrap-input #inputFileHis {
   display: none;
 }
-.container .wrap-input .btnChuyendoi {
+.container .wrap-input .btnChuyendoi,
+.container .wrap-input .btnSave {
   font-size: 20px;
   padding: 15px 50px;
   border-radius: 20px;
@@ -51,10 +56,12 @@ body {
   letter-spacing: 2px;
   cursor: pointer;
 }
-.container .wrap-input .btnChuyendoi:hover {
+.container .wrap-input .btnChuyendoi:hover,
+.container .wrap-input .btnSave:hover {
   background-color: #cea370;
 }
-.container .wrap-input .btnChooseFile {
+.container .wrap-input .btnChooseFile,
+.container .wrap-input .btnChooseFileHistory {
   margin: 15px 0;
   font-size: 20px;
   padding: 15px 50px;
@@ -65,8 +72,43 @@ body {
   letter-spacing: 2px;
   cursor: pointer;
 }
-.container .wrap-input .btnChooseFile:hover {
+.container .wrap-input .btnChooseFile:hover,
+.container .wrap-input .btnChooseFileHistory:hover {
   background-color: #cea370;
+}
+.container .wrap-input #history {
+  margin-bottom: 10px;
+  height: 380px;
+  overflow: auto;
+}
+.container .wrap-input #history h3 {
+  position: sticky;
+  top: 0;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  color: #e0b17a;
+  font-size: 40px;
+  background-color: #111;
+}
+.container .wrap-input #history table th, .container .wrap-input #history table td {
+  border: 1px solid #fff;
+  padding: 20px;
+  text-align: center;
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+.container .wrap-input #history table thead {
+  background-color: #111;
+  position: sticky;
+  top: 67px;
+}
+.container .wrap-input #history table td:not(.chose) {
+  cursor: default;
+}
+.container .wrap-input #history table .chose:hover {
+  background-color: #cea370;
+  color: #fff;
 }
 .container .wrap-tableResult {
   width: 70%;
