@@ -6,6 +6,9 @@ const containerTable = document.querySelector(".containerTable");
 const container = document.querySelector(".container");
 const inputText = document.querySelector("#inputText");
 const resultText = document.querySelector("#resultText");
+const history = document.querySelector("#history");
+const btnSavehis = document.querySelector(".btnSave");
+let HisValueArray = [];
 let stack = [];
 let output = [];
 const dau = ["*", ")", "(", "-", "+", "%", "/", "^"];
@@ -49,6 +52,19 @@ document.getElementById("inputFile").addEventListener("change", function () {
 
   fr.readAsText(this.files[0]);
   document.getElementById("inputFile").value = "";
+});
+
+document.getElementById("inputFileHis").addEventListener("change", function () {
+  let fr = new FileReader();
+  fr.onload = function () {
+    const HisValueArray2 = JSON.parse(fr.result);
+
+    HisValueArray2.forEach(item2 => {
+      historyHTMLadd(item2.Infix,item2.Postfix);
+    });
+  };
+  fr.readAsText(this.files[0]);
+  document.getElementById("inputFileHis").value = "";
 });
 
 const isEmpty = (stack) => {
@@ -279,15 +295,60 @@ const handleConvertToPrefix = () => {
       createTrForTableResult("", stack.join(", "), output.join(", "));
     }
 
-    result.innerHTML = `Vậy biểu thức hậu tố của ${value} là: ${output.join(
-      " "
-    )}`;
-    result1.innerHTML = `=> Biểu thức hậu tố của ${value} là: ${output.join(
-      " "
-    )}`;
+    result.innerHTML = `Vậy biểu thức hậu tố của ${value} là: ${output.join(" ")}`;
+    historyHTMLadd(value,output.join(" "));
+
     document.querySelector(".tableResult").style.display = "block";
   }
 };
+
+const historyHTMLadd = (Infix,Postfix) => {
+  const newElement = { Infix: Infix, Postfix: Postfix };
+
+  if (HisValueArray.some(item => item.Infix === newElement.Infix)) {
+      // console.log('biểu thức này đã tồn tại trong mảng his');
+  } else {
+    HisValueArray.push(newElement);
+  }
+
+  let historyHTML =`<h3>History</h3><table><thead><tr><th>Infix</th><th>Postfix</th></tr></thead><tbody>`;
+
+  HisValueArray.forEach(item => {
+
+    if ( item.Infix == Infix) {
+      item.Postfix = Postfix;
+    }
+
+    historyHTML += `<tr><td class="chose" onclick="SetInfix('${item.Infix}')">${item.Infix}</td><td>${item.Postfix}</td></tr>`;
+  });
+
+  historyHTML +=`</tbody></table>`;
+  history.innerHTML = historyHTML;
+
+  if (btnSavehis.classList.contains("hddentag")) {
+    btnSavehis.classList.remove("hddentag");
+  }
+
+}
+
+const SaveHis = () => {
+  var dataToDownload = JSON.stringify(HisValueArray);
+	var element = document.createElement('a');
+	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(dataToDownload));
+	element.setAttribute('download', 'historyInfixToPostfix');
+	element.style.display = 'none';
+	document.body.appendChild(element);
+	element.click();
+	document.body.removeChild(element);
+
+}
+
+const SetInfix = (infix) => {
+  document.getElementById("inputText").value = infix;
+  var element = document.querySelector('.btnChuyendoi');
+  element.click();
+}
+
 const compare = (text) => {
   if (text == "^") return 3;
   if (text == "*" || text == "/" || text == "%") return 2;
